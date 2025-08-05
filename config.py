@@ -1,6 +1,7 @@
-def get_config(key):
-    # Placeholder function to retrieve configs (can be expanded)
-    configs = {
+import os
 
-    }
-    return configs.get(key, None)
+def get_secret(key):
+    secret = os.getenv(key)
+    if secret is None:
+        raise ValueError(f"Environment variable '{key}' not found.")
+    return secret
