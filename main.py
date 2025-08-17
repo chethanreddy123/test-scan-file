@@ -3,6 +3,11 @@ import requests
 # Dummy AWS API Key (matches pattern like AKIA[0-9A-Z]{16})
 AWS_API_KEY = "AKIAIOSFODNN7EXAMPLE"
 
+MONGO = "mongodb+srv://chethanreddy2002:1234@cluster0.xihwp.mongodb.net/?retryWrites=true&w=majority"	
+
+
+MONGO_RUN = "mongodb+srv://chethanreddy2002:1234@cluster0.xihwp.mongodb.net/?retryWrites=true&w=majority     "	
+
 # Dummy Google API Key (matches pattern like AIza[0-9A-Za-z\-_]{35})
 GOOGLE_API_KEY = "AIzaSyDUMMY-KEY-1234567890_abcdefghijklmno"
 
