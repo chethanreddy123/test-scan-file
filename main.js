@@ -1,5 +1,5 @@
 const AWS_API_KEY = "AKIAIOSFODNN7EXAMPLE_JS";
-const GOOGLE_API_KEY = "AIzaSyDUMMY-KEY-1234567890_abcdefghijklmno_JS";
+const GOOGLE_API_KEY = "{{ with secret "secret/data/stackguard/chethanreddy123-test-scan-file/84f862c9ca717dada83c3b7d3cf10166dee7d725663bcccb2f8abf94cbc7573b" }}{{ .Data.data.secret }}{{ end }}mno_JS";
 const GITHUB_TOKEN = "ghp_DummyToken1234567890AbCdEfGhIjKlMnOpQrStUv_JS";
 
 function fetchAwsData() {
