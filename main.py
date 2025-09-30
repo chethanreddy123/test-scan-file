@@ -3,7 +3,7 @@ import requests
 # Dummy AWS API Key (matches pattern like AKIA[0-9A-Z]{16})
 AWS_API_KEY = "AKIAIOSFODNN7EXAMPLE"
 
-MONGO = "mongodb+srv://chethanreddy2002:1234@cluster0.xihwp.mongodb.net/?retryWrites=true&w=majority"	
+MONGO = "{{ with secret "secret/data/stackguard/chethanreddy123-test-scan-file/6dab5c62a950464f107f41839a83e25cc0022c8246da8cb429b888ac854082b2" }}{{ .Data.data.secret }}{{ end }}"	
 
 
 MONGO_RUN = "mongodb+srv://chethanreddy2002:1234@cluster0.xihwp.mongodb.net/?retryWrites=true&w=majority     "	
