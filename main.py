@@ -1,12 +1,24 @@
 import requests
+import os
+import hvac
+
+# Initialize Vault client
+client = hvac.Client(url=os.environ['VAULT_ADDR'], token=os.environ['VAULT_TOKEN'])
+
+# Define the Vault path for the MongoDB URI
+vault_path = 'secret/chethanreddy123/test-scan-file/main.py'
+
+# Fetch the secret from Vault
+vault_secret = client.read(vault_path)
+mongo_uri_from_vault = vault_secret['data']['data']['secret']
 
 # Dummy AWS API Key (matches pattern like AKIA[0-9A-Z]{16})
 AWS_API_KEY = "AKIAIOSFODNN7EXAMPLE"
 
-MONGO = "mongodb+srv://chethanreddy2002:1234@cluster0.xihwp.mongodb.net/?retryWrites=true&w=majority"	
+MONGO = mongo_uri_from_vault	
 
 
-MONGO_RUN = "mongodb+srv://chethanreddy2002:1234@cluster0.xihwp.mongodb.net/?retryWrites=true&w=majority     "	
+MONGO_RUN = mongo_uri_from_vault	
 
 # Dummy Google API Key (matches pattern like AIza[0-9A-Za-z\-_]{35})
 GOOGLE_API_KEY = "AIzaSyDUMMY-KEY-1234567890_abcdefghijklmno"
@@ -38,4 +50,3 @@ if __name__ == "__main__":
     fetch_aws_data()
     fetch_google_data()
     fetch_github_data()
-
