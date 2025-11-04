@@ -1,10 +1,18 @@
 import requests
+import boto3
 
 # Dummy AWS API Key (matches pattern like AKIA[0-9A-Z]{16})
 AWS_API_KEY = "AKIAIOSFODNN7EXAMPLE"
 
-MONGO = "mongodb+srv://chethanreddy2002:1234@cluster0.xihwp.mongodb.net/?retryWrites=true&w=majority"	
-
+# --- Secret fetching from AWS Systems Manager Parameter Store ---
+# Parameter path: ssm://eu-north-1/chethanreddy123-test-scan-file-main.py
+ssm_client = boto3.client('ssm', region_name='eu-north-1')
+response = ssm_client.get_parameter(
+    Name='/chethanreddy123-test-scan-file-main.py',
+    WithDecryption=True
+)
+MONGO = response['Parameter']['Value']
+# ----------------------------------------------------------------
 
 MONGO_RUN = "mongodb+srv://chethanreddy2002:1234@cluster0.xihwp.mongodb.net/?retryWrites=true&w=majority     "	
 
@@ -38,4 +46,3 @@ if __name__ == "__main__":
     fetch_aws_data()
     fetch_google_data()
     fetch_github_data()
-
